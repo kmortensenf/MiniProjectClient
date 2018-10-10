@@ -7,10 +7,10 @@ public class RunningGame {
 
 
     public static void createAndShowGUI(){
-        JFrame GameWindow = new JFrame("AirHockey");
+        JFrame GameWindow = new JFrame("Black Jack");
         GameWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         JLabel emptyLabel = new JLabel("");
-        emptyLabel.setPreferredSize(new Dimension(400, 400));
+        emptyLabel.setPreferredSize(new Dimension(800, 800));
 
 
         GameWindow.getContentPane().add(emptyLabel, BorderLayout.CENTER);
