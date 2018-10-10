@@ -43,7 +43,7 @@ public class RunningGame extends JFrame
 		 
 		
 		Dimension d = t.getScreenSize();
-		this.setSize(d.width / 4, d.height / 2);
+		this.setSize(d.width / 2, d.height / 2);
 		int xPos = (d.width / 2) - (this.getWidth() / 2);
 		int yPos = (d.height / 2) - (this.getHeight() / 2);
 		
