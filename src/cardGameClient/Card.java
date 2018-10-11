@@ -1,5 +1,6 @@
 package cardGameClient;
 
+import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -92,6 +93,11 @@ public class Card {
 	//Get the number of the card
 	public int getCardNumber() {
 		return cardNumber;
+	}
+	
+	public Image getCardImage() {
+		Image resizeImage = cardImage.getScaledInstance(100, 145, Image.SCALE_SMOOTH);
+		return resizeImage;
 	}
 	
 }
