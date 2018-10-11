@@ -1,16 +1,22 @@
 import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 import java.awt.Toolkit;
 import java.awt.Dimension;
+import java.beans.*;
 
 public class RunningGame extends JFrame
 {
 		JButton Stand, Hit, Bet;
+		JLabel Say;
 		JTextArea Area;
 		JTextField txtF1;
+		JSlider howMuchBet;
+		double i = 1000;
 
     public static void createAndShowGUI()
     {
@@ -19,8 +25,6 @@ public class RunningGame extends JFrame
         GameWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         JLabel emptyLabel = new JLabel("");
         emptyLabel.setPreferredSize(new Dimension(800, 800));
-
-
         GameWindow.getContentPane().add(emptyLabel, BorderLayout.CENTER);
         GameWindow.pack();
         GameWindow.setVisible(true);
@@ -47,7 +51,8 @@ public class RunningGame extends JFrame
 		
 		JPanel Frame = new JPanel();
 		
-		Area = new JTextArea(15, 40);
+		Area = new JTextArea(15, 60);
+		//Frame.WIDTH * 18, Frame.HEIGHT * 28 -- alternativ måde for size
 		Area.setLineWrap(true);
 		Area.setWrapStyleWord(true);
 		JScrollPane Scroll = new JScrollPane(Area, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
@@ -55,15 +60,28 @@ public class RunningGame extends JFrame
 		Frame.add(Scroll);
 		
 		Stand = new JButton("Stand");
-		Bet = new JButton("Bet");
 		Hit = new JButton("Hit");
 		ListenForButton lFB = new ListenForButton();
 		Stand.addActionListener(lFB);
-		Bet.addActionListener(lFB);
 		Hit.addActionListener(lFB);
+		Bet = new JButton("Bet");
+		Bet.addActionListener(lFB);
+		
+		howMuchBet = new JSlider(0, 100, 1);
+		howMuchBet.setMinorTickSpacing(10);
+		howMuchBet.setMajorTickSpacing(10);
+		howMuchBet.setPaintTicks(true);
+		howMuchBet.setPaintLabels(true);
+		ListenForSlider lFS = new ListenForSlider();
+		howMuchBet.addChangeListener(lFS);
 		Frame.add(Stand);
-		Frame.add(Bet);
 		Frame.add(Hit);
+		Frame.add(Bet);
+		
+		Say = new JLabel("how much do you wish to bet");
+		Frame.add(Say);
+		
+		Frame.add(howMuchBet);;
 		
 		this.add(Frame);
 		
@@ -78,15 +96,18 @@ public class RunningGame extends JFrame
 			{
 				if(e.getSource() == Stand)
 				{
+					{
 					Area.append("Tets for Stand");
 					Area.append("\n");
+					}
 				} else if (e.getSource() == Hit)
 				{
 					Area.append("Tets for Hit");
 					Area.append("\n");
 				} else if (e.getSource() == Bet)
 				{
-					Area.append("Tets for Bet");
+					i -= howMuchBet.getValue();
+					Area.append("Your bet: " + howMuchBet.getValue() + " - You now Have " + i);
 					Area.append("\n");
 				}
 				
@@ -94,6 +115,20 @@ public class RunningGame extends JFrame
     		
     	}
     	
+    	private class ListenForSlider implements ChangeListener
+    	{
+
+    		@Override
+    		public void stateChanged(ChangeEvent e) {
+    			if (e.getSource() == howMuchBet)
+    			{
+    				Say.setText("Multiply result by what? " + howMuchBet.getValue());
+    				
+    			}
+    			
+    		}
+    		
+    	}
 
         public class cardClass {
         	
@@ -147,7 +182,7 @@ public class RunningGame extends JFrame
             	cardName[31] = "diamonds7";
             	cardName[32] = "diamonds8";
             	cardName[33] = "diamonds9";
-            cardName[34] = "diamonds10";
+            	cardName[34] = "diamonds10";
             	cardName[35] = "diamondsJack";
             	cardName[36] = "diamondsQueen";
             	cardName[37] = "diamondsKing";
@@ -161,14 +196,14 @@ public class RunningGame extends JFrame
             	cardName[44] = "clubs7";
             	cardName[45] = "clubs8";
             	cardName[46] = "clubs9";
-            cardName[47] = "clubs10";
+            	cardName[47] = "clubs10";
             	cardName[48] = "clubsJack";
             	cardName[49] = "clubsQueen";
             	cardName[50] = "clubsKing";
             	cardName[51] = "clubsAce";
             	
         	}
-            	
+
             	public void getCardName() {
         			return cardName;
         		}
@@ -178,10 +213,8 @@ public class RunningGame extends JFrame
         		}
         		
             	
-            	
 
         	}
-    }
 
 	
 	public static void main (String[] args){
