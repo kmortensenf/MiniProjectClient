@@ -24,6 +24,7 @@ public class RunningGame extends JFrame
 		JTextField txtF1;
 		JSlider howMuchBet;
 		double i = 1000;
+		double bet;
 
     public static void createAndShowGUI()
     {
@@ -74,6 +75,7 @@ public class RunningGame extends JFrame
 		Bet = new JButton("Bet");
 		Bet.addActionListener(lFB);
 		
+		/* for Slider
 		howMuchBet = new JSlider(0, 100, 1);
 		howMuchBet.setMinorTickSpacing(10);
 		howMuchBet.setMajorTickSpacing(10);
@@ -81,6 +83,8 @@ public class RunningGame extends JFrame
 		howMuchBet.setPaintLabels(true);
 		ListenForSlider lFS = new ListenForSlider();
 		howMuchBet.addChangeListener(lFS);
+		*/
+		
 		Frame.add(Stand);
 		Frame.add(Hit);
 		Frame.add(Bet);
@@ -88,11 +92,15 @@ public class RunningGame extends JFrame
 		Say = new JLabel("how much do you wish to bet");
 		Frame.add(Say);
 		
-		Frame.add(howMuchBet);;
+		txtF1 = new JTextField("", 8);
+		Frame.add(txtF1);
+		
+		//Frame.add(howMuchBet); --Slider
 		
 		this.add(Frame);
 		
 		this.setVisible(true);
+		txtF1.requestFocus();
 		
     }
     
@@ -120,7 +128,7 @@ public class RunningGame extends JFrame
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
-					Area.append(Integer.toString(playerCards));
+					Area.append(" Card: " + Integer.toString(playerCards));
 					Area.append("\n");
 					}
 				} else if (e.getSource() == Hit)
@@ -129,15 +137,31 @@ public class RunningGame extends JFrame
 					Area.append("\n");
 				} else if (e.getSource() == Bet)
 				{
-					i -= howMuchBet.getValue();
-					Area.append("Your bet: " + howMuchBet.getValue() + " - You now Have " + i);
-					Area.append("\n");
+					try {
+						bet = Double.parseDouble(txtF1.getText());
+						//i -= howMuchBet.getValue();
+						//Area.append("Your bet: " + howMuchBet.getValue() + " - You now Have " + i);
+						//Area.append("\n");
+						
+						i -= bet;
+						String getValue = txtF1.getText();
+						Area.append("You bet: " + getValue + " You now have " + i + "\n");
+						txtF1.setText("");
+						txtF1.requestFocus();
+					}
+					
+					catch(NumberFormatException excep)
+					{
+						JOptionPane.showMessageDialog(RunningGame.this, 
+								"Please enter a number ", "Error", 
+								JOptionPane.ERROR_MESSAGE);
+					}
 				}
 				
 			}
 			
     	}
-    	
+    	/*
     	private class ListenForSlider implements ChangeListener
     	{
 
@@ -151,7 +175,8 @@ public class RunningGame extends JFrame
     			
     		}
     		
-    	}
+    	}*/
+    	
 
         public class cardClass {
         	
