@@ -1,6 +1,9 @@
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+
+import cardGameClient.cardGameClient;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -8,6 +11,10 @@ import javax.swing.*;
 import java.awt.Toolkit;
 import java.awt.Dimension;
 import java.beans.*;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.net.Socket;
 
 public class RunningGame extends JFrame
 {
@@ -89,15 +96,31 @@ public class RunningGame extends JFrame
 		
     }
     
-    	private class ListenForButton implements ActionListener
+    	private class ListenForButton extends cardGameClient implements ActionListener
     	{
-
+    		
 			public void actionPerformed(ActionEvent e) 
 			{
+				try {
+					Socket socket = new Socket("localhost",8085);
+					in = new DataInputStream(socket.getInputStream());
+					out = new DataOutputStream(socket.getOutputStream());
+					playerCards = 0;
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				if(e.getSource() == Stand)
 				{
 					{
 					Area.append("Tets for Stand");
+					try {
+						requestCards(in,out);
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					Area.append(Integer.toString(playerCards));
 					Area.append("\n");
 					}
 				} else if (e.getSource() == Hit)
@@ -112,7 +135,7 @@ public class RunningGame extends JFrame
 				}
 				
 			}
-    		
+			
     	}
     	
     	private class ListenForSlider implements ChangeListener
@@ -204,12 +227,12 @@ public class RunningGame extends JFrame
             	
         	}
 
-            	public void getCardName() {
+            	public String[] getCardName() {
         			return cardName;
         		}
 
         		public void setCardName(String cardName) {
-        			this.cardName = cardName;
+        			//this.cardName = cardName;
         		}
         		
             	
