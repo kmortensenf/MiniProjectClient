@@ -154,7 +154,6 @@ public class RunningGame extends JFrame
     		
     	}*/
     	
-			/*
 
         public class cardClass {
         	
@@ -241,7 +240,7 @@ public class RunningGame extends JFrame
             	
 
         	}
-*/
+
 	
 	public static void main (String[] args){
 
