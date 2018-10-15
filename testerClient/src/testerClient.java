@@ -159,6 +159,17 @@ public class testerClient extends Card {
 			cardsUpdateValue = cardsValue + cardArray[playerCard3].getCardValue();
 		}
 		System.out.println("New value of your cards: " + cardsUpdateValue);
+
+		if (cardArray[playerCard4].getCardNumber() == 12 || cardArray[4].getCardNumber() == 25 || cardArray[playerCard4].getCardNumber() == 38 || cardArray[playerCard4].getCardNumber() == 51) {
+			aces++;
+		}
+		if (cardsValue + cardArray[playerCard4].getCardValue() > 21 && aces > 0) {
+			cardsUpdateValue2 = cardsValue + cardArray[playerCard4].getCardValue() -10;
+			aces--;
+		} else {
+			cardsUpdateValue2 = cardsValue + cardArray[playerCard4].getCardValue();
+		}
+		System.out.println("New value of your cards: " + cardsUpdateValue2);
 	}
 	
 	public static void displayHit(Card cardArray[], DataInputStream in) throws IOException {
