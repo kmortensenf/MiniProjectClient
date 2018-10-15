@@ -19,6 +19,7 @@ public class testerClient extends Card {
 	public static DataOutputStream out;
 	public static int playerCards = 0;
 	public static int playerCard1 = 0;
+    public static int aces = 0;
 	public static int playerCard2 = 0;
 	public static int cardsValue = 0;
 	public static int playerCard3 = 0;
@@ -32,6 +33,7 @@ public class testerClient extends Card {
 	public static JFrame frame;
 	public static JTextArea TextArea;
 	public static JPanel panel;
+	public static int numberOfHits;
 	
 	public testerClient(int cardNumber, int cardValue, BufferedImage cardImage) {
 		super(cardNumber, cardValue, cardImage);
@@ -142,26 +144,40 @@ public class testerClient extends Card {
 	}
 	
 	public static void requestHit(Card cardArray[],DataInputStream in, DataOutputStream out) throws IOException {
-		out.writeInt(2);
-		receiveInfo = in.readInt();
-		if (receiveInfo < 52) {
-			playerCard3 = receiveInfo;
-		}
-		int aces = 0;
-		System.out.println("The value of the third card is: " + cardArray[playerCard3].getCardValue() + "\n" + "The number of the third card is: " + cardArray[playerCard3].getCardNumber());
-		if (cardArray[playerCard3].getCardNumber() == 12 || cardArray[playerCard3].getCardNumber() == 25 || cardArray[playerCard3].getCardNumber() == 38 || cardArray[playerCard3].getCardNumber() == 51) {
-			aces++;
-		}
-		if (cardsValue + cardArray[playerCard3].getCardValue() > 21 && aces > 0) {
-			cardsUpdateValue = cardsValue + cardArray[playerCard3].getCardValue() -10;
-			aces--;
-		} else {
-			cardsUpdateValue = cardsValue + cardArray[playerCard3].getCardValue();
-		}
-		System.out.println("New value of your cards: " + cardsUpdateValue);
+		numberOfHits++;
 
+		if (numberOfHits==1) {
+
+			out.writeInt(2);
+			receiveInfo = in.readInt();
+			if (receiveInfo < 52) {
+				playerCard3 = receiveInfo;
+			}
+
+			System.out.println("The value of the third card is: " + cardArray[playerCard3].getCardValue() + "\n" + "The number of the third card is: " + cardArray[playerCard3].getCardNumber());
+			if (cardArray[playerCard3].getCardNumber() == 12 || cardArray[playerCard3].getCardNumber() == 25 || cardArray[playerCard3].getCardNumber() == 38 || cardArray[playerCard3].getCardNumber() == 51) {
+				aces++;
+			}
+			if (cardsValue + cardArray[playerCard3].getCardValue() > 21 && aces > 0) {
+				cardsUpdateValue = cardsValue + cardArray[playerCard3].getCardValue() - 10;
+				aces--;
+			} else {
+				cardsUpdateValue = cardsValue + cardArray[playerCard3].getCardValue();
+			}
+			System.out.println("New value of your cards: " + cardsUpdateValue);
+		}
+
+		if (numberOfHits== 2){
+
+
+            out.writeInt(3);
+            receiveInfo = in.readInt();
+		if (receiveInfo < 52) {
+			playerCard4 = receiveInfo;
+		}
 		if (cardArray[playerCard4].getCardNumber() == 12 || cardArray[4].getCardNumber() == 25 || cardArray[playerCard4].getCardNumber() == 38 || cardArray[playerCard4].getCardNumber() == 51) {
 			aces++;
+
 		}
 		if (cardsValue + cardArray[playerCard4].getCardValue() > 21 && aces > 0) {
 			cardsUpdateValue2 = cardsValue + cardArray[playerCard4].getCardValue() -10;
@@ -170,6 +186,9 @@ public class testerClient extends Card {
 			cardsUpdateValue2 = cardsValue + cardArray[playerCard4].getCardValue();
 		}
 		System.out.println("New value of your cards: " + cardsUpdateValue2);
+
+}
+System.out.println(numberOfHits);
 	}
 	
 	public static void displayHit(Card cardArray[], DataInputStream in) throws IOException {
