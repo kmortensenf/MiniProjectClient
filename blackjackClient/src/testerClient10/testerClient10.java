@@ -34,19 +34,33 @@ public class testerClient10 extends Card {
 	public static JTextArea TextArea;
 	public static JPanel panel;
 	
+	
 	public testerClient10() throws IOException {
 		panel = new JPanel();
+		panel.setLayout(null);
 		panel.setBackground(new Color(0,128,0));
 		TextArea = new JTextArea(10,40);
+		Dimension sizeTextArea = TextArea.getPreferredSize();
+		TextArea.setBounds(750, 500, sizeTextArea.width, sizeTextArea.height);
 		JLabel blackjackName = new JLabel("Blackjack!");
 		blackjackName.setFont(new Font("Arial",Font.PLAIN,35));
+		Dimension sizeBlackJackName = blackjackName.getPreferredSize();
+		blackjackName.setBounds(900, 100, sizeBlackJackName.width, sizeBlackJackName.height);
 		panel.add(blackjackName);
 		panel.add(TextArea);
 		frame.add(panel);
 		JButton Deal = new JButton("Deal Cards");
+		Dimension sizeDeal = Deal.getPreferredSize();
+		Deal.setBounds(750, 750, sizeDeal.width, sizeDeal.height);
 		JButton Hit = new JButton("Hit");
+		Dimension sizeHit = Hit.getPreferredSize();
+		Hit.setBounds(900, 750, sizeHit.width, sizeHit.height);
 		JButton Stand = new JButton("Stand");
+		Dimension sizeStand = Stand.getPreferredSize();
+		Stand.setBounds(1000, 750, sizeStand.width, sizeStand.height);
 		JButton Reset = new JButton("Reset");
+		Dimension sizeReset = Reset.getPreferredSize();
+		Reset.setBounds(1115, 750, sizeReset.width, sizeReset.height);
 		panel.add(Deal);
 		panel.add(Hit);
 		panel.add(Stand);
@@ -74,17 +88,30 @@ public class testerClient10 extends Card {
 		Rectangle maxBounds = applicationEnv.getMaximumWindowBounds();
 		frame.setBounds(maxBounds);
 		panel = new JPanel();
+		panel.setLayout(null);
 		panel.setBackground(new Color(0,128,0));
 		TextArea = new JTextArea(10,40);
+		Dimension sizeTextArea = TextArea.getPreferredSize();
+		TextArea.setBounds(750, 500, sizeTextArea.width, sizeTextArea.height);
 		JLabel blackjackName = new JLabel("Blackjack!");
 		blackjackName.setFont(new Font("Arial",Font.PLAIN,35));
+		Dimension sizeBlackJackName = blackjackName.getPreferredSize();
+		blackjackName.setBounds(900, 100, sizeBlackJackName.width, sizeBlackJackName.height);
 		panel.add(blackjackName);
 		panel.add(TextArea);
 		frame.add(panel);
 		JButton Deal = new JButton("Deal Cards");
+		Dimension sizeDeal = Deal.getPreferredSize();
+		Deal.setBounds(750, 750, sizeDeal.width, sizeDeal.height);
 		JButton Hit = new JButton("Hit");
+		Dimension sizeHit = Hit.getPreferredSize();
+		Hit.setBounds(900, 750, sizeHit.width, sizeHit.height);
 		JButton Stand = new JButton("Stand");
+		Dimension sizeStand = Stand.getPreferredSize();
+		Stand.setBounds(1000, 750, sizeStand.width, sizeStand.height);
 		JButton Reset = new JButton("Reset");
+		Dimension sizeReset = Reset.getPreferredSize();
+		Reset.setBounds(1115, 750, sizeReset.width, sizeReset.height);
 		panel.add(Deal);
 		panel.add(Hit);
 		panel.add(Stand);
@@ -115,44 +142,82 @@ public class testerClient10 extends Card {
 	
 	public static void displayPlayerCards(Card cardArray[]) throws IOException {
 		JLabel cardLabel0 = new JLabel(new ImageIcon(cardArray[playerCard1].getCardImage()));
+		Dimension size1 = cardLabel0.getPreferredSize();
+		cardLabel0.setBounds(250, 100,size1.width, size1.height);
+		
 		JLabel cardLabel1 = new JLabel(new ImageIcon(cardArray[playerCard2].getCardImage()));
+		Dimension size2 = cardLabel0.getPreferredSize();
+		cardLabel1.setBounds(375, 100,size2.width, size2.height);
+		
 		JLabel cardString = new JLabel(new String("Player cards: "));
+		Dimension size3 = cardString.getPreferredSize();
+		cardString.setBounds(150, 100,size3.width, size3.height);
 
-		cardLabel0.setSize(100,300);
-		cardLabel1.setSize(400,600);
+		//cardLabel0.setSize(100,300);
+		//cardLabel1.setSize(400,600);
 
 		panel.add(cardString);
 		panel.add(cardLabel0);
 		panel.add(cardLabel1);
+		panel.repaint();
 	}
 	
 	public static void displayDealerCards(Card cardArray[]) throws IOException {
 		JLabel cardLabel0 = new JLabel(new ImageIcon(cardArray[dealerCard1].getCardImage()));
+
+		Dimension size1 = cardLabel0.getPreferredSize();
+		cardLabel0.setBounds(1375, 100,size1.width, size1.height);
+		
 		JLabel cardLabel1 = new JLabel(new ImageIcon(cardArray[dealerCard2].getCardImage()));
+
+		Dimension size2 = cardLabel0.getPreferredSize();
+		cardLabel1.setBounds(1500, 100,size2.width, size2.height);
+		
 		JLabel cardString = new JLabel(new String("Dealer cards: "));
 
-		cardLabel0.setSize(100,145);
-		cardLabel1.setSize(300,145);
+		Dimension size3 = cardString.getPreferredSize();
+		cardString.setBounds(1250, 100,size3.width, size3.height);
+
+		//cardLabel0.setSize(100,145);
+		//cardLabel1.setSize(300,145);
 		
 		panel.add(cardString);
 		panel.add(cardLabel0);
 		panel.add(cardLabel1);
+		panel.repaint();
 	}
 	
 	public static void requestHit(Card cardArray[]) throws IOException {
+		if (playerCard3 == 0) {
 		playerCard3 = in.readInt();
 		playerCards = in.readInt();
 		
 		System.out.println("The number of the third card is: " + cardArray[playerCard3].getCardNumber());
 		System.out.println("New value of your cards: " + playerCards);
+	} else if (playerCard4 == 0 && playerCard3 != 0) {
+		playerCard4 = in.readInt();
+		playerCards = in.readInt();
+		System.out.println("The number of the fourth card is: " + cardArray[playerCard4].getCardNumber());
+		System.out.println("New value of your cards: " + playerCards);
+		}
 	}
 	
 	public static void displayHit(Card cardArray[]) throws IOException {
-		JLabel cardLabel0 = new JLabel(new ImageIcon(cardArray[playerCard3].getCardImage()));
+		if (playerCard3 != 0 && playerCard4 == 0) {
+			JLabel cardLabel0 = new JLabel(new ImageIcon(cardArray[playerCard3].getCardImage()));
+			Dimension size = cardLabel0.getPreferredSize();
+			cardLabel0.setBounds(500, 100,size.width, size.height);
+			panel.add(cardLabel0);
+		} else if (playerCard4 != 0) {
+			JLabel cardLabel1 = new JLabel(new ImageIcon(cardArray[playerCard4].getCardImage()));
+			Dimension size2 = cardLabel1.getPreferredSize();
+			cardLabel1.setBounds(625, 100,size2.width, size2.height);
+			panel.add(cardLabel1);
+		}
 
-		cardLabel0.setSize(100,300);
+		//cardLabel0.setSize(100,300);
 
-		panel.add(cardLabel0);
+		panel.repaint();
 	}
 	
 	public static void requestStand(Card cardArray[]) throws IOException {
@@ -164,12 +229,14 @@ public class testerClient10 extends Card {
 	
 	public static void displayDealerStand(Card cardArray[]) throws IOException {
 		JLabel cardLabel0 = new JLabel(new ImageIcon(cardArray[dealerCard3].getCardImage()));
-		JLabel cardString = new JLabel(new String("Dealer extra cards: "));
+		Dimension size1 = cardLabel0.getPreferredSize();
+		cardLabel0.setBounds(1625, 100,size1.width, size1.height);
 		
-		cardLabel0.setSize(100,300);
+		
+		//cardLabel0.setSize(100,300);
 
-		panel.add(cardString);
 		panel.add(cardLabel0);
+		panel.repaint();
 
 	}
 	
