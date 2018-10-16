@@ -5,17 +5,6 @@ import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.text.DefaultCaret;
 
-/**  
-private String getServerAddress() {
-    return JOptionPane.showInputDialog(
-        frame,
-        "Enter IP Address of the Server:",
-        "Welcome to the Room",
-        JOptionPane.QUESTION_MESSAGE);
-}
-
-*/
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
@@ -241,7 +230,6 @@ public class CHAT extends JFrame
 	{
 		CHAT start = new CHAT();
 		start.run();
-		//new CHAT();
 		start.panel.setVisible(true);
 	}
 }
