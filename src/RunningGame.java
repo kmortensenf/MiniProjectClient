@@ -1,8 +1,6 @@
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
-import java.awt.Image;
-import java.awt.image.BufferedImage;
 
 import cardGameClient.cardGameClient;
 
@@ -51,7 +49,6 @@ public class RunningGame extends JFrame
 		this.setSize(d.width / 2, d.height / 2);
 		int xPos = (d.width / 2) - (this.getWidth() / 2);
 		int yPos = (d.height / 2) - (this.getHeight() / 2);
-		
 		this.setLocation(xPos, yPos);
 		
 		//this.setResizable(false);
@@ -262,8 +259,9 @@ public class RunningGame extends JFrame
         			//this.cardName = cardName;
         		}
         	 	
-
+        	
         	}
+        
         
         
 
