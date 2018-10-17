@@ -35,11 +35,14 @@ public class testerClient10 extends Card {
 	public static boolean standBoolean = false;
 	public static boolean dealBoolean = false;
 	public static JFrame frame;
+	public static JFrame menu;
 	public static JTextArea TextArea;
 	public static JPanel panel;
+	public static JPanel menuPanel;
 	
 	
 	public testerClient10() throws IOException {
+		createArray();
 		panel = new JPanel();
 		panel.setLayout(null);
 		panel.setBackground(new Color(0,128,0));
@@ -65,6 +68,10 @@ public class testerClient10 extends Card {
 		JButton Reset = new JButton("Reset");
 		Dimension sizeReset = Reset.getPreferredSize();
 		Reset.setBounds(1115, 750, sizeReset.width, sizeReset.height);
+		JButton backMenu = new JButton("Main Menu");
+		Dimension sizeBackMenu = backMenu.getPreferredSize();
+		backMenu.setBounds(1700, 900, sizeBackMenu.width, sizeBackMenu.height);
+		panel.add(backMenu);
 		panel.add(Deal);
 		panel.add(Hit);
 		panel.add(Stand);
@@ -73,6 +80,7 @@ public class testerClient10 extends Card {
 		Hit.addActionListener(new hit());
 		Stand.addActionListener(new stand());
 		Reset.addActionListener(new reset());
+		backMenu.addActionListener(new backMenu());
 		frame.setVisible(true);
 	}
 	
@@ -81,50 +89,28 @@ public class testerClient10 extends Card {
 	}
 
 	public static void main(String [] args) throws IOException {
-		//testerClient10 client1 = new testerClient10();
 		socket = new Socket("localhost",8087);
 		in = new DataInputStream(socket.getInputStream());
 		out = new DataOutputStream(socket.getOutputStream());
-		createArray();
-		frame = new JFrame("Blackjack");
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		GraphicsEnvironment applicationEnv = GraphicsEnvironment.getLocalGraphicsEnvironment();
-		Rectangle maxBounds = applicationEnv.getMaximumWindowBounds();
-		frame.setBounds(maxBounds);
-		panel = new JPanel();
-		panel.setLayout(null);
-		panel.setBackground(new Color(0,128,0));
-		TextArea = new JTextArea("Blackjack!",25,40);
-		Dimension sizeTextArea = TextArea.getPreferredSize();
-		TextArea.setBounds(750, 300, sizeTextArea.width, sizeTextArea.height);
-		JLabel blackjackName = new JLabel("Blackjack!");
-		blackjackName.setFont(new Font("Arial",Font.PLAIN,35));
-		Dimension sizeBlackJackName = blackjackName.getPreferredSize();
-		blackjackName.setBounds(900, 100, sizeBlackJackName.width, sizeBlackJackName.height);
-		panel.add(blackjackName);
-		panel.add(TextArea);
-		frame.add(panel);
-		JButton Deal = new JButton("Deal Cards");
-		Dimension sizeDeal = Deal.getPreferredSize();
-		Deal.setBounds(750, 750, sizeDeal.width, sizeDeal.height);
-		JButton Hit = new JButton("Hit");
-		Dimension sizeHit = Hit.getPreferredSize();
-		Hit.setBounds(900, 750, sizeHit.width, sizeHit.height);
-		JButton Stand = new JButton("Stand");
-		Dimension sizeStand = Stand.getPreferredSize();
-		Stand.setBounds(1000, 750, sizeStand.width, sizeStand.height);
-		JButton Reset = new JButton("Reset");
-		Dimension sizeReset = Reset.getPreferredSize();
-		Reset.setBounds(1115, 750, sizeReset.width, sizeReset.height);
-		panel.add(Deal);
-		panel.add(Hit);
-		panel.add(Stand);
-		panel.add(Reset);
-		Deal.addActionListener(new dealCards());
-		Hit.addActionListener(new hit());
-		Stand.addActionListener(new stand());
-		Reset.addActionListener(new reset());
-		frame.setVisible(true);
+		menu = new JFrame("Blackjack Menu");
+		menu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		menu.setSize(300,200);
+		menuPanel = new JPanel();
+		menuPanel.setLayout(null);
+		menuPanel.setBackground(new Color(0,128,0));
+		menu.add(menuPanel);
+		JLabel blackjackMenu = new JLabel("Main Menu");
+		blackjackMenu.setFont(new Font("Arial",Font.PLAIN,35));
+		Dimension sizeBlackJackMenu = blackjackMenu.getPreferredSize();
+		blackjackMenu.setBounds(menu.getWidth()/5, menu.getHeight()/15, sizeBlackJackMenu.width, sizeBlackJackMenu.height);
+		JButton StartGame = new JButton("Start Game");
+		StartGame.addActionListener(new startGame());
+		menuPanel.add(StartGame);
+		menuPanel.add(blackjackMenu);
+		Dimension sizeStartGame = StartGame.getPreferredSize();
+		StartGame.setBounds(menu.getWidth()/3,menu.getHeight()/3,sizeStartGame.width,sizeStartGame.height);
+		menu.setLocationRelativeTo(null);
+		menu.setVisible(true);
 	}
 	
 	public static void dealPlayerCards(Card cardArray[]) throws IOException {
@@ -159,9 +145,6 @@ public class testerClient10 extends Card {
 		Dimension size3 = cardString.getPreferredSize();
 		cardString.setBounds(125, 150,size3.width, size3.height);
 
-		//cardLabel0.setSize(100,300);
-		//cardLabel1.setSize(400,600);
-
 		panel.add(cardString);
 		panel.add(cardLabel0);
 		panel.add(cardLabel1);
@@ -188,8 +171,7 @@ public class testerClient10 extends Card {
 		
 		panel.add(cardLabel1);
 		}
-		//cardLabel0.setSize(100,145);
-		//cardLabel1.setSize(300,145);
+		
 		panel.repaint();
 		
 	}
@@ -232,8 +214,6 @@ public class testerClient10 extends Card {
 			cardLabel2.setBounds(750, 100,size3.width, size3.height);
 			panel.add(cardLabel2);
 		}
-
-		//cardLabel0.setSize(100,300);
 		
 		panel.repaint();
 	}
@@ -277,7 +257,6 @@ public class testerClient10 extends Card {
 			
 		}
 		panel.repaint();
-		//cardLabel0.setSize(100,300);
 	}
 	
 	public static void resetHands() throws IOException {
@@ -297,10 +276,39 @@ public class testerClient10 extends Card {
 		dealerCards = -1;
 		dealerCard1Value = 0;
 		out.writeInt(0);
-		//frame.dispose();
 		frame.remove(panel);
 		new testerClient10();
 		TextArea.append("\nNew Game Starting:");
+	}
+	
+	public static void startGame() throws IOException {
+		frame = new JFrame("Blackjack");
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		GraphicsEnvironment applicationEnv = GraphicsEnvironment.getLocalGraphicsEnvironment();
+		Rectangle maxBounds = applicationEnv.getMaximumWindowBounds();
+		frame.setBounds(maxBounds);
+	}
+	
+	public static void backMenu() throws IOException {
+		menu = new JFrame("Blackjack Menu");
+		menu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		menu.setSize(300,200);
+		menuPanel = new JPanel();
+		menuPanel.setLayout(null);
+		menuPanel.setBackground(new Color(0,128,0));
+		menu.add(menuPanel);
+		JLabel blackjackMenu = new JLabel("Main Menu");
+		blackjackMenu.setFont(new Font("Arial",Font.PLAIN,35));
+		Dimension sizeBlackJackMenu = blackjackMenu.getPreferredSize();
+		blackjackMenu.setBounds(menu.getWidth()/5, menu.getHeight()/15, sizeBlackJackMenu.width, sizeBlackJackMenu.height);
+		JButton StartGame = new JButton("Start Game");
+		Dimension sizeStartGame = StartGame.getPreferredSize();
+		StartGame.setBounds(menu.getWidth()/3,menu.getHeight()/3,sizeStartGame.width,sizeStartGame.height);
+		StartGame.addActionListener(new startGame());
+		menuPanel.add(blackjackMenu);
+		menuPanel.add(StartGame);
+		menu.setLocationRelativeTo(null);
+		menu.setVisible(true);
 	}
 	
 	static class dealCards implements ActionListener {
@@ -456,6 +464,30 @@ public class testerClient10 extends Card {
 				e1.printStackTrace();
 			}
 			}
+	}
+	static class startGame implements ActionListener {
+
+		public void actionPerformed(ActionEvent e) {
+			try {
+				startGame();
+				new testerClient10();
+				menu.setVisible(false);
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
 		}
 	}
+	static class backMenu implements ActionListener {
+		
+		public void actionPerformed(ActionEvent e) {
+			try {
+				backMenu();
+				frame.setVisible(false);
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
+			
+		}
+	}
+}
 
