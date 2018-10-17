@@ -1,6 +1,13 @@
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+<<<<<<< HEAD
+=======
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+//tænker at billederne skal være under runningGame, ikke sandt?
+>>>>>>> 7a129f91b5f73a666d520cd9bc5246402ce0c05b
 
 import cardGameClient.cardGameClient;
 
@@ -13,6 +20,7 @@ import java.awt.Dimension;
 import java.beans.*;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.net.Socket;
 
@@ -49,7 +57,6 @@ public class RunningGame extends JFrame
 		this.setSize(d.width / 2, d.height / 2);
 		int xPos = (d.width / 2) - (this.getWidth() / 2);
 		int yPos = (d.height / 2) - (this.getHeight() / 2);
-		
 		this.setLocation(xPos, yPos);
 		
 		//this.setResizable(false);
@@ -103,6 +110,33 @@ public class RunningGame extends JFrame
 		txtF1.requestFocus();
 		
     }
+		/* Test for importeret billede
+		 
+	
+        public class ImageInFrame {
+			public void main(String[] args) throws IOException {
+            	final ImageIcon icon = new ImageIcon(/Users/danielchrone/Documents/Github/MiniProjectClient/Pictures/memeLord.jpg⁩);
+
+                String path = "memeLord.jpg";
+                File file = new File(path);
+                BufferedImage image = ImageIO.read(file);
+                JLabel label = new JLabel(new ImageIcon(image));
+                JFrame f = new JFrame();
+                f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                f.getContentPane().add(label);
+                f.pack();
+                f.setLocation(WIDTH,HEIGHT);
+                f.setVisible(true);
+  /*
+   
+  
+
+            }
+        }
+        
+        
+		
+    
     
     	private class ListenForButton extends cardGameClient implements ActionListener
     	{
@@ -259,10 +293,15 @@ public class RunningGame extends JFrame
         		public void setCardName(String cardName) {
         			//this.cardName = cardName;
         		}
-        		
-            	
-
+<<<<<<< HEAD
+        	 	
+        	
+=======
+>>>>>>> 7a129f91b5f73a666d520cd9bc5246402ce0c05b
         	}
+       
+        
+        
 
 	
 	public static void main (String[] args){
