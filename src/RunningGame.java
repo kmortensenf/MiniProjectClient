@@ -3,6 +3,7 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
+//tænker at billederne skal være under runningGame, ikke sandt?
 
 import cardGameClient.cardGameClient;
 
