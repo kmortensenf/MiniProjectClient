@@ -2,6 +2,10 @@
 <classpath>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="src" path="src"/>
+<<<<<<< HEAD
 	<classpathentry kind="src" path="Image"/>
+=======
+	<classpathentry kind="src" path="Pictures"/>
+>>>>>>> 7a129f91b5f73a666d520cd9bc5246402ce0c05b
 	<classpathentry kind="output" path="out/production/ProgrammingProjectGame"/>
 </classpath>
