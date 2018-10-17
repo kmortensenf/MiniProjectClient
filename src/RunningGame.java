@@ -1,6 +1,8 @@
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
 
 import cardGameClient.cardGameClient;
 
@@ -259,10 +261,11 @@ public class RunningGame extends JFrame
         		public void setCardName(String cardName) {
         			//this.cardName = cardName;
         		}
-        		
-            	
+        	 	
 
         	}
+        
+        
 
 	
 	public static void main (String[] args){
