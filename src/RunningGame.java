@@ -1,3 +1,4 @@
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -16,6 +17,7 @@ import java.awt.Dimension;
 import java.beans.*;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.net.Socket;
 
@@ -106,6 +108,28 @@ public class RunningGame extends JFrame
 		txtF1.requestFocus();
 		
     }
+		/* Test for importeret billede
+        public class ImageInFrame {
+            @SuppressWarnings("unused")
+			public void main(String[] args) throws IOException {
+                String path = "HestHest.jpg";
+                File file = new File(path);
+                BufferedImage image = ImageIO.read(file);
+                JLabel label = new JLabel(new ImageIcon(image));
+                JFrame f = new JFrame();
+                f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                f.getContentPane().add(label);
+                f.pack();
+                f.setLocation(WIDTH,HEIGHT);
+                f.setVisible(true);
+            	final ImageIcon icon = new ImageIcon("C:\\Users\\you\\Desktop\\HestHest.jpg");
+
+            }
+        }
+        */
+        
+		
+    
     
     	private class ListenForButton extends cardGameClient implements ActionListener
     	{
@@ -262,10 +286,8 @@ public class RunningGame extends JFrame
         		public void setCardName(String cardName) {
         			//this.cardName = cardName;
         		}
-        	 	
-
         	}
-        
+       
         
 
 	
