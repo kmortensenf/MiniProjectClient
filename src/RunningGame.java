@@ -109,10 +109,13 @@ public class RunningGame extends JFrame
 		
     }
 		/* Test for importeret billede
+		 
+	
         public class ImageInFrame {
-            @SuppressWarnings("unused")
 			public void main(String[] args) throws IOException {
-                String path = "HestHest.jpg";
+            	final ImageIcon icon = new ImageIcon(/Users/danielchrone/Documents/Github/MiniProjectClient/Pictures/memeLord.jpg⁩);
+
+                String path = "memeLord.jpg";
                 File file = new File(path);
                 BufferedImage image = ImageIO.read(file);
                 JLabel label = new JLabel(new ImageIcon(image));
@@ -122,11 +125,13 @@ public class RunningGame extends JFrame
                 f.pack();
                 f.setLocation(WIDTH,HEIGHT);
                 f.setVisible(true);
-            	final ImageIcon icon = new ImageIcon("C:\\Users\\you\\Desktop\\HestHest.jpg");
+  /*
+   
+  
 
             }
         }
-        */
+        
         
 		
     
