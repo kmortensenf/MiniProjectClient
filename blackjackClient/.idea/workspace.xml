@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="36d98d76-dca3-4cd2-a0f2-e98201205ed2" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/bin/testerClient10/Card.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/testerClient10/Card.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/testerClient10/testerClient10$dealCards.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/testerClient10/testerClient10$dealCards.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/testerClient10/testerClient10$hit.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/testerClient10/testerClient10$hit.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/testerClient10/testerClient10$reset.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/testerClient10/testerClient10$reset.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/testerClient10/testerClient10$stand.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/testerClient10/testerClient10$stand.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/testerClient10/testerClient10.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/testerClient10/testerClient10.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/testerClient10/testerClient10.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/testerClient10/testerClient10.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/bin/" />
@@ -21,10 +16,12 @@
     <session id="-1603766633">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="2" />
+          <entry key="project.closed" value="4" />
           <entry key="project.open.time.1" value="1" />
+          <entry key="project.open.time.12" value="1" />
+          <entry key="project.open.time.13" value="1" />
           <entry key="project.open.time.2" value="1" />
-          <entry key="project.opened" value="2" />
+          <entry key="project.opened" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -54,8 +51,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/testerClient10/testerClient10.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" column="37" lean-forward="true" selection-start-line="12" selection-start-column="37" selection-end-line="12" selection-end-column="37" />
+            <state relative-caret-position="568">
+              <caret line="562" selection-start-line="562" selection-end-line="562" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -98,6 +98,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -120,8 +122,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -129,7 +129,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1539784735885" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../MiniProjectServer/blackjackServer" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="preferences.customizations" />
@@ -178,16 +178,18 @@
       <updated>1539780917858</updated>
       <workItem from="1539780921388" duration="3811000" />
       <workItem from="1539934071319" duration="309000" />
+      <workItem from="1539934580246" duration="259000" />
+      <workItem from="1539934876968" duration="57000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4120000" />
+    <option name="totallyTimeSpent" value="4436000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="101" y="104" width="1400" height="883" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2522388" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2597015" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -233,8 +235,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/testerClient10/testerClient10.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="37" lean-forward="true" selection-start-line="12" selection-start-column="37" selection-end-line="12" selection-end-column="37" />
+        <state relative-caret-position="568">
+          <caret line="562" selection-start-line="562" selection-end-line="562" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

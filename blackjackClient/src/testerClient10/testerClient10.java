@@ -40,25 +40,12 @@ public class testerClient10 extends Card {
 	public static JFrame menu;
 	public static JTextArea TextArea;
 	public static JPanel panel;
-<<<<<<< HEAD
+
 
 
 	
-	public testerClient10() throws IOException {
 
 
-
-
-		panel = new JPanel();
-		panel.setLayout(null);
-
-		BufferedImage background = ImageIO.read(new File("C:/Users/Frederik/Desktop/GitProjects/Programming MiniProject/MiniProjectClient/TableT.jpg"));
-		JLabel backgroundLabel = new JLabel(new ImageIcon(background));
-		panel.add(backgroundLabel);
-		panel.repaint();
-
-		TextArea = new JTextArea(10,40);
-=======
 	public static JPanel menuPanel;
 	
 	
@@ -68,7 +55,7 @@ public class testerClient10 extends Card {
 		panel.setLayout(null);
 		panel.setBackground(new Color(0,128,0));
 		TextArea = new JTextArea("Blackjack!",25,40);
->>>>>>> fe3fae223175ec6ba177b7bcce955bb737f93fba
+
 		Dimension sizeTextArea = TextArea.getPreferredSize();
 		TextArea.setBounds(750, 300, sizeTextArea.width, sizeTextArea.height);
 		JLabel blackjackName = new JLabel("Blackjack!");
@@ -111,7 +98,7 @@ public class testerClient10 extends Card {
 	}
 
 	public static void main(String [] args) throws IOException {
-<<<<<<< HEAD
+
 		//testerClient10 client1 = new testerClient10();
 
 		//showBackground();
@@ -163,7 +150,7 @@ public class testerClient10 extends Card {
 
 
 
-=======
+
 		socket = new Socket("localhost",8087);
 		in = new DataInputStream(socket.getInputStream());
 		out = new DataOutputStream(socket.getOutputStream());
@@ -186,7 +173,7 @@ public class testerClient10 extends Card {
 		StartGame.setBounds(menu.getWidth()/3,menu.getHeight()/3,sizeStartGame.width,sizeStartGame.height);
 		menu.setLocationRelativeTo(null);
 		menu.setVisible(true);
->>>>>>> fe3fae223175ec6ba177b7bcce955bb737f93fba
+
 	}
 	
 	public static void dealPlayerCards(Card cardArray[]) throws IOException {
@@ -228,13 +215,7 @@ public class testerClient10 extends Card {
 		panel.repaint();
 	}
 
-/**public static void showBackground()throws IOException{
 
-	BufferedImage background = ImageIO.read(new File("C:/Users/Frederik/Desktop/GitProjects/Programming MiniProject/MiniProjectClient/TableT.jpg"));
-	JLabel backgroundLabel = new JLabel(new ImageIcon(background));
-	panel.add(backgroundLabel);
-	panel.repaint();
-**/
 
 
 	
@@ -579,22 +560,4 @@ public class testerClient10 extends Card {
 }
 
 
- class ImagePanel extends JPanel{
 
-	private BufferedImage image;
-
-	public ImagePanel() {
-		try {
-			image = ImageIO.read(new File("C:/Users/Frederik/Desktop/GitProjects/Programming MiniProject/MiniProjectClient/TableT.jpg"));
-		} catch (IOException ex) {
-
-		}
-	}
-
-	@Override
-	protected void paintComponent(Graphics g) {
-		super.paintComponent(g);
-		g.drawImage(image, 0, 0, this); //
-	}
-
-}
