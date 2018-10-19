@@ -40,14 +40,7 @@ public class testerClient10 extends Card {
 	public static JFrame menu;
 	public static JTextArea TextArea;
 	public static JPanel panel;
-
-
-
-	
-
-
 	public static JPanel menuPanel;
-	
 	
 	public testerClient10() throws IOException {
 		createArray();
@@ -55,7 +48,6 @@ public class testerClient10 extends Card {
 		panel.setLayout(null);
 		panel.setBackground(new Color(0,128,0));
 		TextArea = new JTextArea("Blackjack!",25,40);
-
 		Dimension sizeTextArea = TextArea.getPreferredSize();
 		TextArea.setBounds(750, 300, sizeTextArea.width, sizeTextArea.height);
 		JLabel blackjackName = new JLabel("Blackjack!");
@@ -98,59 +90,6 @@ public class testerClient10 extends Card {
 	}
 
 	public static void main(String [] args) throws IOException {
-
-		//testerClient10 client1 = new testerClient10();
-
-		//showBackground();
-		socket = new Socket("localhost",8087);
-		in = new DataInputStream(socket.getInputStream());
-		out = new DataOutputStream(socket.getOutputStream());
-		createArray();
-		frame = new JFrame("Blackjack");
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		GraphicsEnvironment applicationEnv = GraphicsEnvironment.getLocalGraphicsEnvironment();
-		Rectangle maxBounds = applicationEnv.getMaximumWindowBounds();
-		frame.setBounds(maxBounds);
-		panel = new JPanel();
-		panel.setLayout(null);
-		panel.setBackground(new Color(0,128,0));
-		TextArea = new JTextArea(10,40);
-		Dimension sizeTextArea = TextArea.getPreferredSize();
-		TextArea.setBounds(750, 500, sizeTextArea.width, sizeTextArea.height);
-		JLabel blackjackName = new JLabel("Blackjack!");
-		blackjackName.setFont(new Font("Arial",Font.PLAIN,35));
-		Dimension sizeBlackJackName = blackjackName.getPreferredSize();
-		blackjackName.setBounds(900, 100, sizeBlackJackName.width, sizeBlackJackName.height);
-		panel.add(blackjackName);
-		panel.add(TextArea);
-		frame.add(panel);
-		JButton Deal = new JButton("Deal Cards");
-		Dimension sizeDeal = Deal.getPreferredSize();
-		Deal.setBounds(750, 750, sizeDeal.width, sizeDeal.height);
-		JButton Hit = new JButton("Hit");
-		Dimension sizeHit = Hit.getPreferredSize();
-		Hit.setBounds(900, 750, sizeHit.width, sizeHit.height);
-		JButton Stand = new JButton("Stand");
-		Dimension sizeStand = Stand.getPreferredSize();
-		Stand.setBounds(1000, 750, sizeStand.width, sizeStand.height);
-		JButton Reset = new JButton("Reset");
-		Dimension sizeReset = Reset.getPreferredSize();
-		Reset.setBounds(1115, 750, sizeReset.width, sizeReset.height);
-		panel.add(Deal);
-		panel.add(Hit);
-		panel.add(Stand);
-		panel.add(Reset);
-		Deal.addActionListener(new dealCards());
-		Hit.addActionListener(new hit());
-		Stand.addActionListener(new stand());
-		Reset.addActionListener(new reset());
-		frame.setVisible(true);
-
-
-
-
-
-
 		socket = new Socket("localhost",8087);
 		in = new DataInputStream(socket.getInputStream());
 		out = new DataOutputStream(socket.getOutputStream());
@@ -173,7 +112,6 @@ public class testerClient10 extends Card {
 		StartGame.setBounds(menu.getWidth()/3,menu.getHeight()/3,sizeStartGame.width,sizeStartGame.height);
 		menu.setLocationRelativeTo(null);
 		menu.setVisible(true);
-
 	}
 	
 	public static void dealPlayerCards(Card cardArray[]) throws IOException {
@@ -214,10 +152,6 @@ public class testerClient10 extends Card {
 		panel.add(cardLabel1);
 		panel.repaint();
 	}
-
-
-
-
 	
 	public static void displayDealerCards(Card cardArray[]) throws IOException {
 		if (standBoolean == false) {
@@ -240,8 +174,7 @@ public class testerClient10 extends Card {
 		panel.add(cardLabel1);
 		}
 		
-		panel.repaint();
-		
+		panel.repaint();	
 	}
 	
 	public static void requestHit(Card cardArray[]) throws IOException {
@@ -422,7 +355,6 @@ public class testerClient10 extends Card {
 			}
 			dealBoolean = true;
 		}
-		
 	}
 	
 	static class hit implements ActionListener {
@@ -451,9 +383,6 @@ public class testerClient10 extends Card {
 			} catch (IOException e1) {
 				e1.printStackTrace();
 			}
-			
-			
-		
 		}
 	}
 	static class stand implements ActionListener {
@@ -513,15 +442,11 @@ public class testerClient10 extends Card {
 					standBoolean = true;
 					displayDealerCards(cardArray);
 				}
-				
-				
 			} catch (IOException e1) {
 				e1.printStackTrace();
 			}
 			System.out.println("Stand");
-			
-		}
-		
+		}	
 	}
 	static class reset implements ActionListener {
 		
@@ -531,7 +456,7 @@ public class testerClient10 extends Card {
 			} catch (IOException e1) {
 				e1.printStackTrace();
 			}
-			}
+		}
 	}
 	static class startGame implements ActionListener {
 
