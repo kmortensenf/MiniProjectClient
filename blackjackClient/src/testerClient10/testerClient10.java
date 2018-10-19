@@ -7,10 +7,12 @@ import java.awt.event.*;
 import java.awt.image.BufferedImage;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.concurrent.TimeUnit;
+import javax.imageio.ImageIO;
 
 import javax.swing.*;
 
@@ -33,12 +35,22 @@ public class testerClient10 extends Card {
 	public static JFrame frame;
 	public static JTextArea TextArea;
 	public static JPanel panel;
-	
+
+
 	
 	public testerClient10() throws IOException {
+
+
+
+
 		panel = new JPanel();
 		panel.setLayout(null);
-		panel.setBackground(new Color(0,128,0));
+
+		BufferedImage background = ImageIO.read(new File("C:/Users/Frederik/Desktop/GitProjects/Programming MiniProject/MiniProjectClient/TableT.jpg"));
+		JLabel backgroundLabel = new JLabel(new ImageIcon(background));
+		panel.add(backgroundLabel);
+		panel.repaint();
+
 		TextArea = new JTextArea(10,40);
 		Dimension sizeTextArea = TextArea.getPreferredSize();
 		TextArea.setBounds(750, 500, sizeTextArea.width, sizeTextArea.height);
@@ -78,6 +90,8 @@ public class testerClient10 extends Card {
 
 	public static void main(String [] args) throws IOException {
 		//testerClient10 client1 = new testerClient10();
+
+		//showBackground();
 		socket = new Socket("localhost",8087);
 		in = new DataInputStream(socket.getInputStream());
 		out = new DataOutputStream(socket.getOutputStream());
@@ -121,6 +135,11 @@ public class testerClient10 extends Card {
 		Stand.addActionListener(new stand());
 		Reset.addActionListener(new reset());
 		frame.setVisible(true);
+
+
+
+
+
 	}
 	
 	public static void dealPlayerCards(Card cardArray[]) throws IOException {
@@ -141,6 +160,7 @@ public class testerClient10 extends Card {
 	}
 	
 	public static void displayPlayerCards(Card cardArray[]) throws IOException {
+
 		JLabel cardLabel0 = new JLabel(new ImageIcon(cardArray[playerCard1].getCardImage()));
 		Dimension size1 = cardLabel0.getPreferredSize();
 		cardLabel0.setBounds(250, 100,size1.width, size1.height);
@@ -161,6 +181,16 @@ public class testerClient10 extends Card {
 		panel.add(cardLabel1);
 		panel.repaint();
 	}
+
+/**public static void showBackground()throws IOException{
+
+	BufferedImage background = ImageIO.read(new File("C:/Users/Frederik/Desktop/GitProjects/Programming MiniProject/MiniProjectClient/TableT.jpg"));
+	JLabel backgroundLabel = new JLabel(new ImageIcon(background));
+	panel.add(backgroundLabel);
+	panel.repaint();
+**/
+
+
 	
 	public static void displayDealerCards(Card cardArray[]) throws IOException {
 		JLabel cardLabel0 = new JLabel(new ImageIcon(cardArray[dealerCard1].getCardImage()));
@@ -381,3 +411,23 @@ public class testerClient10 extends Card {
 		}
 	}
 
+
+ class ImagePanel extends JPanel{
+
+	private BufferedImage image;
+
+	public ImagePanel() {
+		try {
+			image = ImageIO.read(new File("C:/Users/Frederik/Desktop/GitProjects/Programming MiniProject/MiniProjectClient/TableT.jpg"));
+		} catch (IOException ex) {
+
+		}
+	}
+
+	@Override
+	protected void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		g.drawImage(image, 0, 0, this); //
+	}
+
+}
