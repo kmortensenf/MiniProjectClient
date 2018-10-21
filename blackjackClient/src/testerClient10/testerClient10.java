@@ -18,29 +18,34 @@ import javax.swing.*;
 
 public class testerClient10 extends Card {
 	
-	public static Socket socket;
-	public static DataInputStream in;
-	public static DataOutputStream out;
-	public static int playerCard1 = -1;
-	public static int playerCard2 = -1;
-	public static int playerCard3 = -1;
-	public static int playerCard4 = -1;
-	public static int playerCard5 = -1;
-	public static int playerCards = -1;
-	public static int dealerCard1 = -1;
-	public static int dealerCard2 = -1;
-	public static int dealerCard3 = -1;
-	public static int dealerCard4 = -1;
-	public static int dealerCard5 = -1;
-	public static int dealerCards = -1;
-	public static int dealerCard1Value = 0;
-	public static boolean standBoolean = false;
-	public static boolean dealBoolean = false;
-	public static JFrame frame;
-	public static JFrame menu;
-	public static JTextArea TextArea;
-	public static JPanel panel;
-	public static JPanel menuPanel;
+	private static Socket socket;
+	private static DataInputStream in;
+	private static DataOutputStream out;
+	private static int playerNum;
+	private int [] player1Cards = new int[13];
+	private int [] player2Cards = new int[13];
+	private int [] player3Cards = new int[13];
+	private int [] dealerCards1 = new int[13];
+	private static int playerCard1 = -1;
+	private static int playerCard2 = -1;
+	private static int playerCard3 = -1;
+	private static int playerCard4 = -1;
+	private static int playerCard5 = -1;
+	private static int playerCards = -1;
+	private static int dealerCard1 = -1;
+	private static int dealerCard2 = -1;
+	private static int dealerCard3 = -1;
+	private static int dealerCard4 = -1;
+	private static int dealerCard5 = -1;
+	private static int dealerCards = -1;
+	private static int dealerCard1Value = 0;
+	private static boolean standBoolean = false;
+	private static boolean dealBoolean = false;
+	private static JFrame frame;
+	private static JFrame menu;
+	private static JTextArea TextArea;
+	private static JPanel panel;
+	private static JPanel menuPanel;
 	
 	public testerClient10() throws IOException {
 		createArray();
@@ -93,6 +98,8 @@ public class testerClient10 extends Card {
 		socket = new Socket("localhost",8087);
 		in = new DataInputStream(socket.getInputStream());
 		out = new DataOutputStream(socket.getOutputStream());
+		playerNum = in.readInt();
+		System.out.println(playerNum + " playerNum");
 		menu = new JFrame("Blackjack Menu");
 		menu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		menu.setSize(300,200);
