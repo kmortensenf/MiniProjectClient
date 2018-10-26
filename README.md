@@ -19,6 +19,10 @@ To run this project, you must either:
 
 Can be found in 'UML Diagrams' folder in Client github
 
+## Communication Protocol 
+
+Something about the definition of the communication protocol between the server and the client
+
 ## Server
 [Server Github](https://github.com/kmortensenf/MiniProjectServer)
 
