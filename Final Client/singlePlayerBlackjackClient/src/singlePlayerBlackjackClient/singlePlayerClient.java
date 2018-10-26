@@ -38,6 +38,8 @@ import java.net.UnknownHostException;
 			in = new DataInputStream(socket.getInputStream());
 			out = new DataOutputStream(socket.getOutputStream());
 			
+			//new Chat();
+			
 			// Player receiving their number
 			playerNum = in.readInt();
 			

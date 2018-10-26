@@ -1,3 +1,4 @@
 @ECHO OFF
-java -jar singlePlayerClientRunner.jar
+start "Lobby" java -jar singlePlayerClientRunner.jar
+start "Chatroom" java -jar Chat.jar
 PAUSE
