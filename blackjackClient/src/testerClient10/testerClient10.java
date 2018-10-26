@@ -21,6 +21,7 @@ public class testerClient10 extends Card {
 	private static DataInputStream in;
 	private static DataOutputStream out;
 	private static int playerNum;
+	private static boolean threePlayers = false;
 	private static int [] player1Cards = new int[13];
 	private static int [] player2Cards = new int[13];
 	private static int [] player3Cards = new int[13];
@@ -144,6 +145,7 @@ public class testerClient10 extends Card {
 
 	public static void displayPlayerCards(Card cardArray[]) throws IOException {
 		//Displaying player 1 cards and player number
+		if (playerNum == 1) {
 		JLabel player1Card1 = new JLabel(new ImageIcon(cardArray[player1Cards[0]].getCardImage()));
 		Dimension sizeCards = player1Card1.getPreferredSize();
 		player1Card1.setBounds(250, 100, sizeCards.width, sizeCards.height);
@@ -156,8 +158,15 @@ public class testerClient10 extends Card {
 		Dimension sizeString = cardString1.getPreferredSize();
 		cardString1.setBounds(100, 150,sizeString.width, sizeString.height);
 		
+		panel.add(player1Card1);
+		panel.add(player1Card2);
+		panel.add(cardString1);
+		
+		} else if (playerNum == 2) {
+		
 		//Display player 2 cards and player number
 		JLabel player2Card1 = new JLabel(new ImageIcon(cardArray[player2Cards[0]].getCardImage()));
+		Dimension sizeCards = player2Card1.getPreferredSize();
 		player2Card1.setBounds(250, 300, sizeCards.width, sizeCards.height);
 		
 		JLabel player2Card2 = new JLabel(new ImageIcon(cardArray[player2Cards[1]].getCardImage()));
@@ -165,10 +174,18 @@ public class testerClient10 extends Card {
 	
 		JLabel cardString2 = new JLabel(new String("Player cards 2: "));
 		cardString2.setFont(new Font("Arial",Font.PLAIN,20));
+		Dimension sizeString = cardString2.getPreferredSize();
 		cardString2.setBounds(100, 350,sizeString.width, sizeString.height);
 		
+		panel.add(player2Card1);
+		panel.add(player2Card2);
+		panel.add(cardString2);
+		
+		} else if (playerNum == 3) {
+			
 		//Display player 3 cards and player number
 		JLabel player3Card1 = new JLabel(new ImageIcon(cardArray[player3Cards[0]].getCardImage()));
+		Dimension sizeCards = player3Card1.getPreferredSize();
 		player3Card1.setBounds(250, 500, sizeCards.width, sizeCards.height);
 		
 		JLabel player3Card2 = new JLabel(new ImageIcon(cardArray[player3Cards[1]].getCardImage()));
@@ -176,9 +193,15 @@ public class testerClient10 extends Card {
 		
 		JLabel cardString3 = new JLabel(new String("Player cards 3: "));
 		cardString3.setFont(new Font("Arial",Font.PLAIN,20));
+		Dimension sizeString = cardString3.getPreferredSize();
 		cardString3.setBounds(100, 550,sizeString.width, sizeString.height);
 		
-		panel.add(player1Card1);
+		panel.add(player3Card1);
+		panel.add(player3Card2);
+		panel.add(cardString3);
+		
+		}
+		/*panel.add(player1Card1);
 		panel.add(player1Card2);
 		panel.add(cardString1);
 		panel.add(player2Card1);
@@ -186,7 +209,7 @@ public class testerClient10 extends Card {
 		panel.add(cardString2);
 		panel.add(player3Card1);
 		panel.add(player3Card2);
-		panel.add(cardString3);
+		panel.add(cardString3);*/
 		panel.repaint();
 	}
 	
@@ -427,6 +450,18 @@ public class testerClient10 extends Card {
 		panel.repaint();
 	}*/
 	
+	public static void requestStand() throws IOException {
+		if (dealerCards1[2] == -1) {
+			dealerCards1[2] = in.readInt();
+			dealerCardsValue = in.readInt();
+		} else if (dealerCards1[2] != -1 && dealerCards1[3] == -1) {
+			dealerCards1[3] = in.readInt();
+			dealerCardsValue = in.readInt();
+		} else {
+			dealerCards1[4] = in.readInt();
+			dealerCardsValue = in.readInt();
+		}
+	}
 	/*public static void requestStand(Card cardArray[]) throws IOException {
 		if (dealerCard3 == -1) {
 			dealerCard3 = in.readInt();
@@ -446,27 +481,27 @@ public class testerClient10 extends Card {
 		}
 	}*/
 	
-	/*public static void displayDealerStand(Card cardArray[]) throws IOException {
-			JLabel cardLabel0 = new JLabel(new ImageIcon(cardArray[dealerCard3].getCardImage()));
-			Dimension size1 = cardLabel0.getPreferredSize();
-			cardLabel0.setBounds(1500, 100,size1.width, size1.height);
-			panel.add(cardLabel0);
+	public static void displayDealerStand(Card cardArray[]) throws IOException {
+			JLabel dealerCard3 = new JLabel(new ImageIcon(cardArray[dealerCards1[2]].getCardImage()));
+			Dimension size1 = dealerCard3.getPreferredSize();
+			dealerCard3.setBounds(1500, 100,size1.width, size1.height);
+			panel.add(dealerCard3);
 			
-		 if (dealerCard4 != -1 && dealerCard5 == -1) {
-			JLabel cardLabel1 = new JLabel(new ImageIcon(cardArray[dealerCard4].getCardImage()));
-			Dimension size2 = cardLabel1.getPreferredSize();
-			cardLabel1.setBounds(1625, 100,size2.width, size2.height);
-			panel.add(cardLabel1);
+		 if (dealerCards1[3] != -1 && dealerCards1[4] == -1) {
+			JLabel dealerCard4 = new JLabel(new ImageIcon(cardArray[dealerCards1[3]].getCardImage()));
+			Dimension size2 = dealerCard4.getPreferredSize();
+			dealerCard4.setBounds(1625, 100,size2.width, size2.height);
+			panel.add(dealerCard4);
 			
-		} else if (dealerCard5 != -1){
-			JLabel cardLabel2 = new JLabel(new ImageIcon(cardArray[dealerCard5].getCardImage()));
-			Dimension size3 = cardLabel2.getPreferredSize();
-			cardLabel2.setBounds(1750, 300,size3.width, size3.height);
-			panel.add(cardLabel2);
+		} else if (dealerCards1[4] != -1){
+			JLabel dealerCard5 = new JLabel(new ImageIcon(cardArray[dealerCards1[4]].getCardImage()));
+			Dimension size3 = dealerCard5.getPreferredSize();
+			dealerCard5.setBounds(1750, 300,size3.width, size3.height);
+			panel.add(dealerCard5);
 			
 		}
 		panel.repaint();
-	}*/
+	}
 	
 	public static void resetHands() throws IOException {
 		//Setting standBoolean and dealBoolean to false
@@ -677,7 +712,35 @@ public class testerClient10 extends Card {
 	static class stand implements ActionListener {
 
 		public void actionPerformed(ActionEvent e) {
-			
+			try {
+				if (dealerCardsValue < 17 && dealBoolean == true) {
+					standBoolean = true;
+					displayDealerCards(cardArray);
+					out.writeInt(7);
+					requestStand();
+					displayDealerStand(cardArray);
+					TextArea.append("\nDealer total value is: " + dealerCardsValue);
+				} else if (dealerCardsValue > 17 && dealBoolean == true || dealerCardsValue == 17 && dealBoolean == true) {
+					standBoolean = true;
+					displayDealerCards(cardArray);
+					TextArea.append("\nDealer total value is: " + dealerCardsValue);
+				}
+				if(playerNum == 1) {
+					if (player1CardsValue < 21  && dealerCardsValue < player1CardsValue || player1CardsValue == 21 && dealerCardsValue < player1CardsValue && player1Cards[2] > -1) {
+						TextArea.append("\nDealer total value is: " + dealerCardsValue + "\nYou win!\nYou need to reset");
+					}
+				} else if (playerNum == 2) {
+					if (player2CardsValue < 21  && dealerCardsValue < player2CardsValue || player2CardsValue == 21 && dealerCardsValue < player2CardsValue && player2Cards[2] > -1) {
+						TextArea.append("\nDealer total value is: " + dealerCardsValue + "\nYou win!\nYou need to reset");
+					}
+				} else if (playerNum == 3) {
+					if (player3CardsValue < 21  && dealerCardsValue < player3CardsValue || player3CardsValue == 21 && dealerCardsValue < player3CardsValue && player3Cards[2] > -1) {
+						TextArea.append("\nDealer total value is: " + dealerCardsValue + "\nYou win!\nYou need to reset");
+					}
+				}
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
 			/*try {
 				if(dealerCards < 17 && playerCards < 21 && dealBoolean == true || dealerCards < 17 && playerCards == 21 && playerCard3 > -1 && dealBoolean == true) {
 					while(dealerCards < 17) {
