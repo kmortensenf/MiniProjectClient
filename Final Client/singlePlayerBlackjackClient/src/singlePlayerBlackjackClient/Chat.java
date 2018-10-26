@@ -56,7 +56,7 @@ public class Chat extends JFrame
 		panel.add(Write);
 		
 		send = new JButton("Send");
-		ListneForButton lFB = new ListneForButton();
+		ActionListener lFB = new ListneForButton();
 		send.addActionListener(lFB);
 		panel.add(send);
 		
