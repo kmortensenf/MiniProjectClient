@@ -1,14 +1,26 @@
 # MiniProjectClient
 
-## Server
-[Server Github](https://github.com/kmortensenf/MiniProjectServer)
+Short description of the project
+
+Blackjack game ...
+
+Chat system ...
 
 ## How to run the project?
+
+More detailed step-by-step of how to ...
 
 To run this project, you must either:
 
 - Launch both the singlePlayerClient/Server and Chat/ChatServer java files
 - Or launch the Batch (.bat) file from the Executables Client/Server folders
+
+## UML Diagrams
+
+Can be found in 'UML Diagrams' folder in Client github
+
+## Server
+[Server Github](https://github.com/kmortensenf/MiniProjectServer)
 
 ## Contributors
 
