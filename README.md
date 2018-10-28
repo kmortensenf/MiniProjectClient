@@ -11,8 +11,6 @@ To run this project download the latest release from both Client and Server repo
 
 Java files:
 
-Java files:
-
 1. Locate to the 'Final Client' and 'Final Server' folders found in the Client and Server repositories
 2. Inside these folders, the .java files are located for both the server/client and the blackjack/chatroom
 3. These .java files can then be executed. (Important note: Make sure to run the server files first, else the client cannot connect)
@@ -28,7 +26,6 @@ Batch and jar files:
 6. After that you will be asked to type in a name, simply type in any name you wish to have
 7. Now minimize the Commandpromts (the line, NOT the x) till you see the green lobby window (it is usually behind the chat systems it opens up first)
 8. You are now running both the server and client files and are free to both play and chat!
-
 
 ## UML Diagrams
 
