@@ -2,9 +2,10 @@
 
 This project is a client/server blackjack game combined with a chatroom feature.
 
-## How to run the project?
+## Server
+[Server Github](https://github.com/kmortensenf/MiniProjectServer)
 
-More detailed step-by-step of how to ...
+## How to run the project?
 
 To run this project download the latest release from both Client and Server repositories and either;
 
@@ -30,9 +31,6 @@ Class diagram, Use Case diagram and Sequence diagram can be found in 'UML Diagra
 ## Communication Protocol 
 
 Something about the definition of the communication protocol between the server and the client
-
-## Server
-[Server Github](https://github.com/kmortensenf/MiniProjectServer)
 
 ## Contributors
 
