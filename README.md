@@ -30,7 +30,15 @@ Class diagram, Use Case diagram and Sequence diagram can be found in 'UML Diagra
 
 ## Communication Protocol 
 
-Something about the definition of the communication protocol between the server and the client
+The communication protocol used is TCP/IP
+
+Here the server listens for a socket connection to accept while the client requests connection to the server
+
+Once a connection has been established it can be used to transfer data in both directions.
+
+In the blackjack game, once the connection has been established, the client sends requests to the server based on which buttons the user has clicked, either Deal Cards, Hit, Stand, Reset etc.
+
+Dependent on what data is transfered to the server, it will know what send back to the client. And the client will in turn know what to do with the data received from the server.
 
 ## Contributors
 
