@@ -40,6 +40,10 @@ In the blackjack game, once the connection has been established, the client send
 
 Dependent on what data is transfered to the server, it will know what send back to the client. And the client will in turn know what to do with the data received from the server.
 
+## Versions
+
+Previous version of both the client and server can also be found in the gitub repositories.
+
 ## Contributors
 
 Contributors to this project are:
